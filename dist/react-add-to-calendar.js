@@ -619,7 +619,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          calendarUrl += "/" + this.formatTime(event.endTime);
 	          calendarUrl += "&location=" + encodeURIComponent(event.location);
 	          calendarUrl += "&text=" + encodeURIComponent(event.title);
-	          calendarUrl += "&details=" + encodeURIComponent(event.description.replace(/\\n\\n/g, '\n\n'));
+	          calendarUrl += "&details=" + encodeURIComponent(event.description.replace(/\\n/g, '\n'));
 	          break;
 
 	        case "yahoo":
@@ -639,7 +639,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          calendarUrl += "&enddt=" + this.formatTime(event.endTime);
 	          calendarUrl += "&subject=" + encodeURIComponent(event.title);
 	          calendarUrl += "&location=" + encodeURIComponent(event.location);
-	          calendarUrl += "&body=" + encodeURIComponent(event.description.replace(/\\n\\n/g, '\n\n'));
+	          calendarUrl += "&body=" + encodeURIComponent(event.description.replace(/\\n/g, '\n'));
 	          calendarUrl += "&allday=false";
 	          calendarUrl += "&uid=" + this.getRandomKey();
 	          calendarUrl += "&path=/calendar/view/Month";
