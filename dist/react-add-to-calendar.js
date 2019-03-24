@@ -198,13 +198,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      return _react2.default.createElement(
 	        "div",
-	        { className: this.props.dropdownClass },
-	        _react2.default.createElement(
-	          "ul",
-	          null,
-	          items
-	        )
-	      );
+            { className: this.props.dropdownClass },
+            _react2.default.createElement(
+                "div",
+                { className: this.props.dropdownInnerClass },
+                    _react2.default.createElement(
+                    "ul",
+                    { className: this.props.dropdownListClass },
+                    items
+                    )
+                )
+	        );
 	    }
 	  }, {
 	    key: "renderButton",
@@ -289,6 +293,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  displayItemIcons: _propTypes2.default.bool,
 	  optionsOpen: _propTypes2.default.bool,
 	  dropdownClass: _propTypes2.default.string,
+	  dropdownInnerClass: _propTypes2.default.string,
+	  dropdownListClass: _propTypes2.default.string,
 	  event: _propTypes2.default.shape({
 	    title: _propTypes2.default.string,
 	    description: _propTypes2.default.string,
@@ -311,6 +317,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  displayItemIcons: true,
 	  optionsOpen: false,
 	  dropdownClass: "react-add-to-calendar__dropdown",
+	  dropdownInnerClass: "react-add-to-calendar__dropdown__inner",
+	  dropdownListClass: "react-add-to-calendar__list",
 	  event: {
 	    title: "Sample Event",
 	    description: "This is the sample event provided as an example only",
@@ -611,7 +619,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          calendarUrl += "/" + this.formatTime(event.endTime);
 	          calendarUrl += "&location=" + encodeURIComponent(event.location);
 	          calendarUrl += "&text=" + encodeURIComponent(event.title);
-	          calendarUrl += "&details=" + encodeURIComponent(event.description);
+	          calendarUrl += "&details=" + encodeURIComponent(event.description.replace(/\\n\\n/g, '\n\n'));
 	          break;
 
 	        case "yahoo":
@@ -631,7 +639,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          calendarUrl += "&enddt=" + this.formatTime(event.endTime);
 	          calendarUrl += "&subject=" + encodeURIComponent(event.title);
 	          calendarUrl += "&location=" + encodeURIComponent(event.location);
-	          calendarUrl += "&body=" + encodeURIComponent(event.description);
+	          calendarUrl += "&body=" + encodeURIComponent(event.description.replace(/\\n\\n/g, '\n\n'));
 	          calendarUrl += "&allday=false";
 	          calendarUrl += "&uid=" + this.getRandomKey();
 	          calendarUrl += "&path=/calendar/view/Month";
